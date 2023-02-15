@@ -7,16 +7,16 @@ const recordSchema = new Schema({
   },
   date:{
     type: Date,
-    required:true
+    // required:true
   },
   amount:{
     type: Number,
-    required:true
+    // required:true
 
   },
   categoryid:{
     type:Number,
-    required:true
+    // required:true
   }
 })
 module.exports = mongoose.model('Record', recordSchema)
