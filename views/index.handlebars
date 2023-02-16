@@ -1,7 +1,10 @@
+
+<a href="./records/new">Create</a>
 <ul>
   {{#each records}}
   <li>
     {{this.name}}
+    <a href="./records/{{ this._id }}/edit">edit</a><!-- 加入這行 -->
   </li>
   {{/each}}
 </ul>
