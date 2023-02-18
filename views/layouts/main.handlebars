@@ -14,7 +14,12 @@
     <nav class="navbar navbar-dark justify-content-between" style="padding: 8px 16px;
     background-color: #e95420;">
       <a class="navbar-brand" href="/">記帳本</a>
-      <a class="btn btn-outline-light" href="/records/new">Create</a>
+      {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+        {{else}}
+        <a href="/users/login" class="btn btn-outline-light">Login</a>
+        {{/if}}
+      
     </nav>
   </header>
   <main>
