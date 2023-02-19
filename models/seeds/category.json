@@ -1,0 +1,9 @@
+{
+  "CATEGORY": {
+    "家居物業": "fa-house",
+    "交通出行": "fa-van-shuttle",
+    "休閒娛樂": "fa-face-grin-beam",
+    "餐飲食品": "fa-utensils",
+    "其他": "fa-pen"
+  }
+}
