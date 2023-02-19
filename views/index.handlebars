@@ -33,7 +33,7 @@
             {{#ifEquals 5 this.categoryId}}<i class="fa-solid fa-pen"></i>{{/ifEquals}}
           </div>
           <div class="item-name"></div>
-          {{this.name}},
+          {{this.name}}
           {{this.amount}}元
           <a href="./records/{{this._id}}/edit"><button class="btn btn-secondary btn-sm m-1">編輯</button></a>
           <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
