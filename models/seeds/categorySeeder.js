@@ -3,7 +3,7 @@ const Category = require('../category')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-mongoose.set('strictQuery', true)
+
 mongoose.connect(process.env.MONGODB_URI)
 const db = mongoose.connection
 const categoryList = [
