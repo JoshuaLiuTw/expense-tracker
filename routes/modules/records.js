@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Record= require('../../models/record')
+const Record = require('../../models/record')
 
 router.get('/new', (req, res) => {
   return res.render('new')
@@ -9,15 +9,16 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const userId = req.user._id
-  const name = req.body.name
-  return Record.create({ name, userId })
+  const { name, date, amount, categoryId } = req.body
+  return Record.create({ name, date, amount, userId, categoryId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .lean()
     .then((record) => res.render('edit', { record }))
     .catch(error => console.log(error))
@@ -35,13 +36,9 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  const name = req.body.name
-  return Record.findOne({ _id, userId })
-    .then(record => {
-      record.name = name
-      return record.save()
-    })
-    .then(() => res.redirect(`/records/${id}`))
+  const { name, date, amount, categoryId } = req.body
+  return Record.findByIdAndUpdate({ _id, userId }, req.body)
+    .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
 

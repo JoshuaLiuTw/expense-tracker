@@ -30,7 +30,12 @@ const flash = require('connect-flash')   // 引用套件
 
 
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main', helpers: {
+    ifEquals: (a, b, options) =>
+      String(a) === String(b) ? options.fn(this) : options.inverse(this)
+  }
+}))
 app.set('view engine', 'handlebars')
 
 

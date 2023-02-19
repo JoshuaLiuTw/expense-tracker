@@ -1,6 +1,32 @@
-<form action="/records" method="POST" style="display: inline;">
-  <div class="input-group">
-    <input class="form-control" type="text" placeholder="name" name="name">
-    <button class="btn btn-success" type="submit">Create</button>
-  </div>
-</form>
+<div class="card card-body">
+  <h1 class="text-center mt-3">必填欄位* 請輸入您的支出</h1>
+  <form action="/records" method="POST">
+    <div class="mb-3">
+      <label for="name" class="mb-2">名稱*</label>
+      <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required>
+    </div>
+    <div class="mb-3">
+      <label for="date" class="mb-2">日期*</label>
+      <input type="date" id="date" name="date" min="2018-01-01" max="2060-12-31" required>
+    </div>
+    <div class="mb-3">
+      <label for="categoryId" class="mb-2">類別*</label>
+      <select class="form-select" name="categoryId">
+        <option selected>Select</option>
+        <option value="1">家居物業</option>
+        <option value="2">交通出行</option>
+        <option value="3">休閒娛樂</option>
+        <option value="4">餐飲食品</option>
+        <option value="5">其他</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="mb-2">金額*</label>
+      <input type="text" id="confirmPassword" name="amount" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">新增支出</button>
+  </form>
+
+</div>
+</div>
+</div>

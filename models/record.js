@@ -1,28 +1,30 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const recordSchema = new Schema({
-  name:{
+  name: {
     type: String,
-    required:true
+    required: true
   },
-  date:{
+  date: {
     type: Date,
-    // required:true
+    required: true
   },
-  amount:{
+  amount: {
     type: Number,
-    // required:true
+    required: true
 
   },
-  categoryid:{
-    type:Number,
-    // required:true
-  },
-  userId:{
-    type:Schema.Types.ObjectId,
+  userId: {
+    type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
     require: true
+  },
+  categoryId: {
+    type: Number,
+    required: true
   }
+
+
 })
 module.exports = mongoose.model('Record', recordSchema)

@@ -1,21 +1,56 @@
-<a class="btn btn-outline-light" href="/records/new">Create</a>
-
-<ul class="list-group">
-  {{#each records}}
-  <li class="list-group-item">
-    <div class="row">
-      <div class="col-auto me-auto">
-        <h4 style="display: inline; vertical-align: middle;">
-          {{ this.name }}
-        </h4>
-      </div>
-      <div class="col-auto">
-        <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
-        <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-          <button class="btn btn-danger" type="submit">delete</button>
-        </form>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-auto mt-5">
+      <form action="/search" method="GET">
+        <select type="submit" name="categoryId" id="category" onchange="this.form.submit()">
+          <option value="6" {{#ifEquals 6 id }}selected{{/ifEquals}}>類別</option>
+          <option value="1" {{#ifEquals 1 id }}selected{{/ifEquals}}>家居物業</option>
+          <option value="2" {{#ifEquals 2 id }}selected{{/ifEquals}}>交通出行</option>
+          <option value="3" {{#ifEquals 3 id }}selected{{/ifEquals}}>休閒娛樂</option>
+          <option value="4" {{#ifEquals 4 id }}selected{{/ifEquals}}>餐飲食品</option>
+          <option value="5" {{#ifEquals 5 id }}selected{{/ifEquals}}>其他</option>
+        </select>
+      </form>
     </div>
-  </li>
-  {{/each}}
-</ul>
+  </div>
+
+  <div class="row">
+    <div class="col-6 m-auto mt-1">
+      <h6 style="text-align: center">總金額{{totalAmount}} 元</h6>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 m-auto mt-1">
+      <ul class="list-group">
+        {{#each records}}
+        <li class="list-group-item">
+          <div class="col-1">
+            {{#ifEquals 1 this.categoryId}}<i class="fa-solid fa-house"></i>{{/ifEquals}}
+            {{#ifEquals 2 this.categoryId}}<i class="fa-solid fa-van-shuttle"></i>{{/ifEquals}}
+            {{#ifEquals 3 this.categoryId}}<i class="fa-solid fa-face-grin-beam"></i>{{/ifEquals}}
+            {{#ifEquals 4 this.categoryId}}<i class="fa-solid fa-utensils"></i>{{/ifEquals}}
+            {{#ifEquals 5 this.categoryId}}<i class="fa-solid fa-pen"></i>{{/ifEquals}}
+          </div>
+          <div class="item-name"></div>
+          {{this.name}},
+          {{this.amount}}元
+          <a href="./records/{{this._id}}/edit"><button class="btn btn-secondary btn-sm m-1">編輯</button></a>
+          <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-danger btn-sm m-1">刪除</button>
+          </form>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 m-auto mt-1">
+      <form action="/records/new" method="GET" class="bg-white pt-3 pb-4 new-account-bar">
+        <div class="d-grid gap-2 col-12 col-sm-6 mx-auto">
+          <button class="btn btn-primary new-account-btn" type="submit">新增支出</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
