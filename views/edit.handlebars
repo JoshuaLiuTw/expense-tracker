@@ -10,14 +10,13 @@
       <input type="date" id="date" name="date" value="{{ record.date }}" min="2018-01-01" max="2060-12-31" required>
     </div>
     <div class="mb-3">
-      <label for="category" class="mb-2">類別*</label>
-      <select class="form-select" name="categoryId" id="category" value="{{ record.categoryId }}">
-        <option value="">Select</option>
-        <option value="1">家居物業</option>
-        <option value="2">交通出行</option>
-        <option value="3">休閒娛樂</option>
-        <option value="4">餐飲食品</option>
-        <option value="5">其他</option>
+      <label for="categoryId">類別<span class="text-danger">*</span></label>
+      <select name="categoryId" id="categoryId" class="form-select" aria-label="Default select example">
+        {{#each categories}}
+        <option value="{{this.id}}" {{#ifEquals this.id ../record.categoryId}} selected {{/ifEquals}}>
+          {{this.name}}
+        </option>
+        {{/each}}
       </select>
     </div>
     <div class="mb-3">
